@@ -1,3 +1,4 @@
+import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import About from "./components/About";
 import Books from "./components/Books";
@@ -8,9 +9,13 @@ function App() {
     <div>
       <Header />
       <main>
-        <About />
-        <Books />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/reservas" element={<Books />} />
+          <Route path="/contacto" element={<Contact />} />
+          <Route path="*" element={<h2 className="notfound">Página no encontrada</h2>} />
+        </Routes>
       </main>
       <footer>© 2026 Hotel Sol</footer>
     </div>

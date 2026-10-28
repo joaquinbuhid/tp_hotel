@@ -25,6 +25,15 @@ nav a {
   text-decoration: none;
 }
 
+nav a.active {
+  border-bottom: 2px solid white;
+}
+
+.notfound {
+  text-align: center;
+  margin-top: 40px;
+}
+
 section {
   max-width: 800px;
   margin: 20px auto;

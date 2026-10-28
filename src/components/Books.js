@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const habitaciones = [
   { id: 1, nombre: "Habitación 1 - Simple", precio: 30000 },
@@ -8,8 +8,15 @@ const habitaciones = [
 ];
 
 function Books() {
-  const [reservas, setReservas] = useState([]);
+  const [reservas, setReservas] = useState(
+    () => JSON.parse(localStorage.getItem("reservas")) || []
+  );
   const [form, setForm] = useState({ nombre: "", habitacion: "", fecha: "" });
+
+  // Guarda las reservas para que no se pierdan al cambiar de página
+  useEffect(() => {
+    localStorage.setItem("reservas", JSON.stringify(reservas));
+  }, [reservas]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
